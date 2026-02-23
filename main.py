@@ -1,3 +1,4 @@
+import math
 import random
 from statistics import mean
 
@@ -148,11 +149,75 @@ print("============================ 14 uzduotis =======================")
 def word_count(txt):
     return len(txt.split())
 
-print(word_count("Labas rytas pasauli"))
+print(word_count("Labas rytas"))
 
 print("============================ 15 uzduotis =======================")
-# Sukurkite funkciją kuri priima du parametrus.
-# Skaičių masyvą ir boolean.
+# Sukurkite funkciją kuri priima du parametrus. Skaičių masyvą ir boolean.
 # Funkcija gražina prafiltruotą masyvą. Kai antras parametras True/tik poriniais skaičiais, False/tik neporiniais skaičiais.
 
-def arr(num,flag):
+def filtered_arr(num, bool):
+    poriniai = []
+    neporiniai = []
+    for i in num:
+        if i % 2 == 0:
+            poriniai.append(i)
+        else:
+            neporiniai.append(i)
+    if bool:
+        return poriniai
+    else:
+        return neporiniai
+print(filtered_arr([1,2,3,4,5,6], True))
+print(filtered_arr([1,2,3,4,5,6], False))
+
+print("============================ 16 uzduotis =======================")
+# Sukurkite funkciją number_is_prime. Funkcija priima skaičių, gražina True/False ar skaičius pirminis.
+
+def number_is_prime(num):
+    if num <= 1:
+        return False
+    for i in range(2, int(math.sqrt(num))+1):
+        if num % i == 0:
+            return False
+    return True
+
+print(number_is_prime(10))
+
+print("============================ 17 uzduotis =======================")
+# Sukurkite funkciją kuri priima du argumentus. Gražina pirmąjį skaičių pakeltą laipsniu tokiu kaip antras skaičius.
+
+def num_power(a,b):
+    return a ** b
+
+print(num_power(2,2))
+
+print("============================ 18 uzduotis =======================")
+# Sukurkite funkciją kuri priima skaičių masyvą ir gražina tik skirtingus elementus. (panašiai kaip sql distinct)
+
+def diff_num_array(nums):
+    diff_nums = []
+    for n in nums:
+        if n not in diff_nums:
+            diff_nums.append(n)
+    return diff_nums
+
+print(diff_num_array([5,5,8,9,10,10]))
+
+print("============================ 19 uzduotis =======================")
+# Sukurkite funkciją kuri priima tekstą ir atspausdina tekste daugiausiai pasikartojantį simbolį.
+
+def most_common_symbol(txt):
+    txt = txt.lower()
+    max_qty = 0
+    most_common = ""
+    for char in txt:
+        qty = txt.count(char)
+        if qty > max_qty:
+            max_qty = qty
+            most_common = char
+    print(most_common)
+
+most_common_symbol("Tekstas")
+
+print("============================ 20 uzduotis =======================")
+# Sukurkite funkciją kuri priima tekstą ir atspausdina jame esantį ilgiausią žodį.
